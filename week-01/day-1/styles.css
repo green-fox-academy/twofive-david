@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+}
+
+body{
+    background-image: url("topography.png");
+}
+
+main{
+    padding: 10%;
+}
+
+p, 
+a{
+    font-family: consolas, courier;
+}
+
+header{
+    background-color: #333333;
+    height: 56px;
+}
+
+h1,
+h2,
+h3{
+    font-family: 'Crete Round', serif;
+}
+
+h1 {
+    padding-bottom: 1em;
+}
+
+h2,
+h3 {
+    padding: 1em 0;
+}
+
+li{
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+nav{
+    float: right;
+    padding-right: 10%;
+    height: 100%;
+}
+
+a,
+.subheader{
+    color: #ff0099;
+}
+
+.center{
+    text-align: center;
+    line-height: 60px;
+}
+
+img{
+    padding: 10px 0 0 10%;
+}
+.margo{
+    margin-bottom: 1em;
+}
