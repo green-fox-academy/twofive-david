@@ -1,2 +1,2 @@
 # twofive-david
-Pal David student repo
+Pal David student repo :octocat:
