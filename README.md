@@ -1,2 +1,2 @@
-# twofive-favid
+# twofive-david
 Pal David student repo
