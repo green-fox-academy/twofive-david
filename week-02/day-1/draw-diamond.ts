@@ -4,24 +4,24 @@ export {};
 
 let lineCount: number = 7;
 let x: number = lineCount;
+let n: number = 1;
 
 let space: string = " ";
 let star: string = "*";
 
 for(let i = 1; i <= lineCount; i++) {
 
-    let starN = star.length;
-
     if (i <= lineCount / 2) {
-        console.log(space.repeat(x) + star);
+        console.log(space.repeat(x) + star.repeat(n));
         x --;
-        star += "**";
+        n += 2;
     }
 
     else {
-        console.log(space.repeat(x) + star);
+        console.log(space.repeat(x) + star.repeat(n));
              x ++;
-        
+             n -= 2;
+             //console.log(n);
     }
 }
 
