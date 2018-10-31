@@ -4,11 +4,11 @@
 let testArray: number[] = [1, 11, 34, 11, 52, 61, 1, 34];
 let newArray: number[] = [];
 
-function unique(arr) {
+function unique(arr: number[]): number[] {
 
     for (let i: number = 0; i < arr.length; i++) {
         
-        let elem = arr[i];
+        let elem: number = arr[i];
 
         if (newArray.indexOf(elem) === -1) {
             newArray.push(elem);
