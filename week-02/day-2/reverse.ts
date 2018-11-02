@@ -17,7 +17,7 @@ console.log(numList.reverse());
 let numList_2: number[] = [3, 4, 5, 6, 7];
 let newArray = [];
 
-for (let i = numList_2.length-1;  i >= 0; i--) {
+for (let i: number = numList_2.length-1;  i >= 0; i--) {
     newArray.push(numList_2[i]);
 }
 console.log(newArray);

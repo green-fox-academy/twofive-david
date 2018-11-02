@@ -9,9 +9,9 @@ export{};
 
 let numList: number[] = [1, 2, 3, 4, 5];
 
-function incrementByOne(n: number) {
-numList[n] += 1;
-return numList;
+function incrementIndex(n: number): number[] {
+  numList[n] += 1;
+  return numList;
 }
 
-console.log(incrementByOne(3));
+console.log(incrementIndex(3));

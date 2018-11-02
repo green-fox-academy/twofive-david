@@ -7,10 +7,10 @@ export{};
 //     -  Prepare for the special case when no parameters are given
 // -  Greet `name`
 
-let name: string = "Greenfox";
+let name: string = 'Greenfox';
 
-function greet(n: string = "Srac"): string {
-        return("Hello " + n + "!");
+function greet(n: string = 'Srac'): string {
+        return('Hello ' + n + '!');
 }
 
-console.log(greet());
+console.log(greet(name));

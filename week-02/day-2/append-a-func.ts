@@ -6,10 +6,10 @@ export{};
 //    appends an 'a' character to its end and returns with a string
 // -  Print the result of `appendAFunc(typo)`
 
-let typo: string = "Chinchill";
+let typo: string = 'Chinchill';
 
 function appendFunc(n: string): string {
-    return(n + "a")
+	return(n + 'a')
 }
 
 console.log(appendFunc(typo));

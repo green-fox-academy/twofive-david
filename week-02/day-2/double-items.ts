@@ -8,9 +8,9 @@ export{};
 
 let drinks: string[] = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 
-drinks.forEach(function(element, index, array){
-   array[index] += element;
-    //return element;
+drinks.forEach(function(element: string, index: number, array: string[]): string {
+	array[index] += element;
+	return element;
 });
 
 console.log(drinks);

@@ -2,17 +2,16 @@ export{};
 'use strict'
 
 // -  Create a variable named `ai` with the following content: `[3, 4, 5, 6, 7]`
-// -  Log the sum of the elements in `ai` to the consol
+// -  Log the sum of the elements in `ai` to the console
 
 let ai: number[] = [3, 4, 5, 6, 7];
 
+let result: number = 0;
 
-    let result: number = 0;
-
-    ai.forEach(function(element, index, array){
-        result += array[index];
-        return result;
-    })
+ai.forEach(function(element: number, index: number, array: number[]): number {
+  result += array[index];
+  return result;
+})
 
 console.log(result);
 

@@ -8,9 +8,10 @@ export{};
 
 let animals: string[] = ["koal", "pand", "zebr"];
 
-let animals_a = animals.map(function(element){
-    element += "a";
-    return element;
-})
+let animals_a = animals.map(function(element: string): string {
+  element += 'a';
+  return element;
+});
+
 
 console.log(animals_a);

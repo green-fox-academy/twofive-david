@@ -7,6 +7,7 @@
 
 let integers: number[] = [4, 5, 6, 7];
 
-integers.forEach(function(el){
-  console.log(el);
+integers.forEach(function(element: number): number {
+  console.log(element);
+  return element;
 })

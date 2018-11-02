@@ -5,14 +5,15 @@ export{};
 // -  Write a function called `sum` that sum all the numbers until the given parameter
 // -  The function should return the result
 
-function factorio(n: number) {
+function factorio(n: number): number {
 
-    let base: number = 1;
+	let base: number = 0;
 
-    for(let i = 1; i <= n; i++) {
-        base *= i;
+		for (let i: number = 1; i <= n; i++) {
+      base += i;
     }
-    return base;
+	
+		return base;
 }
 
 console.log(factorio(5));
