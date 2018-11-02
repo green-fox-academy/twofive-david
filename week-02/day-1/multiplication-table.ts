@@ -3,9 +3,10 @@
 let number: number = 15;
 let count: number = 0;
 
-for (let i = 1; i <= 10; i++) {
+for (let i: number = 1; i <= 10; i++) {
     count += 1;
-    console.log(count + " * " + number + " = " + count * number);
+    //console.log(count + " * " + number + " = " + count * number);
+    console.log(`${count} * ${number} = ${count * number}`);
 }
 
 // Create a program that

@@ -1,17 +1,18 @@
+export {};
 'use strict';
 
-let lineCount: number = 40;
-let star: string = "*";
+let lineCount: number = 10;
+let star: string = '*';
 
-let space: string = " ";
+let space: string = ' ';
 let y: number = lineCount;
-let finalSpace: string = space.repeat(lineCount);
+let finalSpace: string = space.repeat(y);
 
-for (let x = 1; x <= lineCount; x++) {
-    console.log(finalSpace + star);
-    star += "**";
-    finalSpace = space.repeat(y-1);
-    y --;
+for (let x: number = 1; x <= lineCount; x++) {
+  console.log(finalSpace + star);
+  star += '**';
+  finalSpace = space.repeat(y-1);
+  y --;
 }
 
 

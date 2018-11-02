@@ -15,18 +15,18 @@ let arr: number[] = [34, 12, 24, 9, 5];
 
 function bubble(arr: number[]): number[] {
   return arr.sort(function(a: number, b: number): number {
-  return a - b;
+    return a - b;
   });
 }
 
 function advancedBubble(arr: number[], booley: boolean): number[] {
   if (booley) {
     return arr.sort(function(a: number, b: number): number {
-  return b - a;
+      return b - a;
   });}
 
   else {
     return arr.sort(function(a: number, b: number): number {
-  return a - b;
+      return a - b;
   });}
 }

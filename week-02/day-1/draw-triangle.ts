@@ -1,11 +1,11 @@
 'use strict';
 
 let lineCount: number = 14;
-let triangle: string = "";
+let triangle: string = '';
 
-for (let i = 1; i <= lineCount; i++) {
-    triangle += "*";
-    console.log(triangle);
+for (let i: number = 1; i <= lineCount; i++) {
+  triangle += '*';
+  console.log(triangle);
 }
 
 // Write a program that draws a triangle like this:
