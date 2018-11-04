@@ -6,12 +6,11 @@ let star: string = '*';
 
 let space: string = ' ';
 let y: number = lineCount;
-let finalSpace: string = space.repeat(y);
 
 for (let x: number = 1; x <= lineCount; x++) {
+  let finalSpace: string = space.repeat(y);
   console.log(finalSpace + star);
   star += '**';
-  finalSpace = space.repeat(y-1);
   y --;
 }
 
