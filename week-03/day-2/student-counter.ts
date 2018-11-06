@@ -1,31 +1,31 @@
 'use strict';
 
 const students: any[] = [
-  {name: 'Theodor', age: 3, candies: 2},
-  {name: 'Paul', age: 9.5, candies: 2},
-  {name: 'Mark', age: 12, candies: 5},
-  {name: 'Peter', age: 7, candies: 3},
-  {name: 'Olaf', age: 12, candies: 7},
-  {name: 'George', age: 10, candies: 1}
+  { name: 'Theodor', age: 3, candies: 2 },
+  { name: 'Paul', age: 9.5, candies: 2 },
+  { name: 'Mark', age: 12, candies: 5 },
+  { name: 'Peter', age: 7, candies: 3 },
+  { name: 'Olaf', age: 12, candies: 7 },
+  { name: 'George', age: 10, candies: 1 }
 ];
 
-function candy (list: any): number {
+function candy(list: any): number {
   let result = 0;
-  
-    for(let i: number = 0; i < list.length; i++) {
-     
-      result += list[i].candies;
 
-    }
-    return result;
+  for (let i: number = 0; i < list.length; i++) {
+
+    result += list[i].candies;
+
+  }
+  return result;
 }
 
 console.log(candy(students));
 
-function sumAge (list: any): number {
+function sumAge(list: any): number {
   let result = 0;
 
-  for (let i: number = 0; i < list.length; i++ ) {
+  for (let i: number = 0; i < list.length; i++) {
     if (list[i].candies < 5) {
       result += list[i].age;
     }
