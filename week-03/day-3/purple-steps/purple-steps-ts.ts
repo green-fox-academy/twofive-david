@@ -22,4 +22,4 @@ function purpleSteps(fromX: number, fromY: number) {
 }
 }
 
-purpleSteps(30, 30)
+purpleSteps(30, 30);
