@@ -25,6 +25,6 @@ for (let i: number = 0; i <= 1000; i++) {
   let starPositionY: number = getRandomArbitrary(0, 400);
   let randomGrey: number = getRandomArbitrary(0, 255);
 
-  ctx.fillStyle = `rgb(${randomGrey}, ${randomGrey}, ${randomGrey})`
+  ctx.fillStyle = `rgb(${randomGrey}, ${randomGrey}, ${randomGrey})`;
   ctx.fillRect(starPositionX, starPositionY, starSize, starSize);
 }
