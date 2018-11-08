@@ -1,4 +1,5 @@
 'use strict';
+export { };
 // Things are a little bit messed up
 // Your job is to decode the notSoCrypticMessage by using the hashmap as a look up table
 // Assemble the fragments into the out variable
@@ -17,43 +18,26 @@ let hashmap = {
   3: 'say goodbye '
 };
 
-function crypticString(y: any []): string[] {
-  for (let i:number = 0; i < y.length; i++){
-    y[i]= y[i].toString();
+function crypticString(y: any[]): string[] {
+  for (let i: number = 0; i < y.length; i++) {
+    y[i] = y[i].toString();
   }
   return y;
 }
 
-//notSoCrypticMessage szamai at vannak alakitva stringe, hogy kesobb ossze lehessen oket hasonlitani az objecet key-kel.
+//notSoCrypticMessage szamai at vannak alakitva stringe, hogy kesobb ossze lehessen oket hasonlitani az object key-kel.
 let base: any[] = crypticString(notSoCrypticMessage);
-let objectKeys: any[] = Object.keys(hashmap);
 
 
-for (let i of base) {
-  if (objectKeys === i) {
-    out += Object.values(hashmap);
+let objectKeys: string[] = Object.keys(hashmap);
+let objectValues: string[] = Object.values(hashmap)
+
+for (let i: number = 0; i < base.length; i++) {
+  for (let y: number = 0; y < objectKeys.length; y++) {
+    if (base[i] === objectKeys[y]) {
+      out += objectValues[y];
+    }
   }
-  console.log(out);
 }
 
 console.log(out);
-
-
-
-
-/*for (let i:number = 0; i < notSoCrypticMessage.length; i++) {
-  
-  let crypticNumber: number = notSoCrypticMessage[i];
-
-    for (let y: number = 0; y < base.length; y ++) {
-      console.log(base[y].);
-    }
-    console.log('crypticNo' + crypticNumber);
-
-    }*/
-    
-
-  // let base: number[] = Object.keys(hashmap);
-
-
-//console.log(out)
