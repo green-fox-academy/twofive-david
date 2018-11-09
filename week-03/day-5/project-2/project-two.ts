@@ -20,6 +20,6 @@ for (let j: number = 0; j <= 200; j += 10) {
   makeLine(midX, j, midY + j, midY);
   makeLine(midX, j, midY - j, midY);
   makeLine(j, midY, midX, midY + j);
-  makeLine(midX, 400 - j, midX + j, midY);
+  makeLine(midX, canvas.height - j, midX + j, midY);
 }
 
