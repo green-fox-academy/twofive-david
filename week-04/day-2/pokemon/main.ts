@@ -1,9 +1,11 @@
 import { Pokemon } from './Pokemon'
- let pokemonOfAsh: Pokemon[] = initializePokemon();
- // Every pokemon has a name and a type.
+ 
+// Every pokemon has a name and a type.
 // Certain types are effective against others, e.g. water is effective against fire.
- // Ash has a few pokemon.
+// Ash has a few pokemon.
 // A wild pokemon appeared!
+
+let pokemonOfAsh: Pokemon[] = initializePokemon();
  let wildPokemon: Pokemon = new Pokemon('Oddish', 'leaf', 'water');
  
  function initializePokemon(): Pokemon[] {
@@ -17,7 +19,7 @@ import { Pokemon } from './Pokemon'
     }
 
     function choosePokemon(): string {
-       let solution = '';
+       let solution: string = '';
         pokemonOfAsh.forEach(instance => {
             if (instance.effectiveAgainst === wildPokemon.type) {
                 solution += instance.name;
@@ -26,4 +28,4 @@ import { Pokemon } from './Pokemon'
         return solution;   
     }
     // Which pokemon should Ash use?
-    console.log('I choose you, ' + choosePokemon());
+    console.log(`I choose you, ${choosePokemon()}!!!!!!`);
