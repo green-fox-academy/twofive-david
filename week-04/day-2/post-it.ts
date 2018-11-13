@@ -10,23 +10,23 @@ export {};
 // a pink with black text: "Awesome"
 // a yellow with green text: "Superb!"
 
-class postIt {
+class PostIt {
   backgroundColor: string;
   text: string;
   textColor: string;
 }
 
-const instanceOne = new postIt();
+const instanceOne = new PostIt();
 instanceOne.backgroundColor = 'orange';
 instanceOne.text = 'Idea 1';
 instanceOne.textColor = 'blue';
 
-const instanceTwo = new postIt();
+const instanceTwo = new PostIt();
 instanceTwo.backgroundColor = 'pink';
 instanceTwo.text = 'Awesome';
 instanceTwo.textColor = 'black';
 
-const instanceThree = new postIt();
+const instanceThree = new PostIt();
 instanceThree.backgroundColor = 'yellow';
 instanceThree.text = 'Superb';
 instanceThree.textColor = 'green';
