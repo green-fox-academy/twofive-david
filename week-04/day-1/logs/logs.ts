@@ -20,8 +20,8 @@ function createArrByLine(text: string): string[] {
   return text.split('\r\n');
 }
 
-function separateData(): string[] {
-  const array = createArrByLine(readFile('log.txt'));
+function separateData(fileName: string): string[] {
+  const array = createArrByLine(readFile(fileName));
   let mainArray = [];
 
   for (let i: number = 0; i < array.length; i++) {
@@ -45,7 +45,7 @@ function checkIp(arr: string[]): string[] {
   return uniqueIpData;
 }
 
-console.log(checkIp(separateData()));
+console.log(checkIp(separateData('log.txt')));
 
 //If I wanted to save this data to a file
 //fs.writeFileSync('this.txt', checkIp(separateData()));
@@ -63,4 +63,4 @@ function getPost(arr: string[]): number {
   return getNumber / postNumber;
 }
 
-console.log(getPost(separateData()));
+console.log(getPost(separateData('log.txt')));
