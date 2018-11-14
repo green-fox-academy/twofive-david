@@ -23,11 +23,11 @@ function splitToLines(fileName: string): string [] {
 return readFile(fileName).split('\r\n');
 }
 
-function checkRows(fileName: string): string[] {
+function checkRows(fileName: string): string [] {
   const linesArray = splitToLines(fileName);
 
   linesArray.every(function(element, index) {
-
+return true;
     })
     
   };
