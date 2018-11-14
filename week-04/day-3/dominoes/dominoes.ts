@@ -1,5 +1,9 @@
 import { Domino } from "./domino";
 
+/** You have the list of Dominoes */
+/** Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides */
+/** eg: [2, 4], [4, 3], [3, 5] ... */
+
 function initializeDominoes(): Domino[] {
   let dominoes = [];
   dominoes.push(new Domino(5, 2));
@@ -18,16 +22,7 @@ function print(dominoes: Domino[]) {
 }
 
 let dominoes = initializeDominoes();
-/** You have the list of Dominoes */
-/** Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides */
-/** eg: [2, 4], [4, 3], [3, 5] ... */
 
-// console.log(dominoes[1].values[0]);
-// console.log(dominoes[1].values[1]);
-// console.log(dominoes[2].values[0]);
-// console.log(typeof dominoes[2].values[1]);
-
-// print(dominoes);
 function matchDominoes(arr: Domino[]): Domino[] {
   let result: Domino[] = [];
 
@@ -37,7 +32,6 @@ function matchDominoes(arr: Domino[]): Domino[] {
         result.push(dominoes[j]);
       }
       else if ((result[i].values[1]) === dominoes[j].values[0]) {
-        //result.push(dominoes[i].values);
         result.push(dominoes[j]);
       }
     }
@@ -47,7 +41,3 @@ function matchDominoes(arr: Domino[]): Domino[] {
   return result;
 }
 console.log(matchDominoes(dominoes));
-
-
-// dominoes.splice(dominoes.indexOf(dominoes[i]), 1)
-// dominoes.splice(dominoes.indexOf(dominoes[j]), 1)
