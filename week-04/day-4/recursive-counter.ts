@@ -3,7 +3,7 @@ export {};
 
 function countDown(n: number): number {
   if (n === 0) {
-    return (0);
+    return (n);
   }
   else {
     console.log(n);
