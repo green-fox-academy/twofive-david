@@ -14,13 +14,13 @@ function drawCircle(x: number, y: number, d: number): void {
   ctx.stroke();
 }
 
-function multiplyCircle(x: number, y: number, d: number): void {
-  drawCircle(x, y, d);
-  if (d > 30) {
-    multiplyCircle(x, y - d * 0.45, d * 0.55);
-    multiplyCircle(x + d * 0.3, y + d * 0.32, d * 0.55);
-    multiplyCircle(x - d * 0.32, y + d * 0.32, d * 0.55);
+function multiplyCircle(x: number, y: number, r: number): void {
+  drawCircle(x, y, r);
+  if (r > 20) {
+    multiplyCircle(x, y - r * 0.5, r * 0.5);
+    multiplyCircle(x + r /2.3, y + r * 0.25, r * 0.5);
+    multiplyCircle(x - r /2.3, y + r * 0.25, r * 0.5);
   }
 }
 
-multiplyCircle(300, 200, 150);
+multiplyCircle(300, 250, 200);
