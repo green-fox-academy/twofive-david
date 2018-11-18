@@ -1,3 +1,5 @@
+import { read } from "fs";
+
 'use strict'
 
 const fs = require('fs');
@@ -13,31 +15,26 @@ function readMyFile(fileName: string): string {
 
 function splitByLines(fileName: string): string[] {
   const fileToSplit = readMyFile(fileName);
-  return fileToSplit.split('\n\r');
+  return fileToSplit.split('\r');
 }
 
-console.log(splitByLines('lottery.txt'));
+function getNumbers() {
+  const linesArr = splitByLines('lottery.txt');
+  let numbersArr: string[][] = [];
+  let finalNumbersArr: string[] = [];
 
-function getLotteryNumbers(fileName: string): void {
-  const fileByLines = splitByLines('lottery.txt');
+  for (let i = 0; i < linesArr.length; i++) {
+    let anyLine = linesArr[i].split(' ');
+    numbersArr.push(anyLine);
+  }
 
-
-  const matrix = fileByLines.map(function (value, index) {
-    return fileByLines[index].split(' ');
+  numbersArr.forEach((element, index) => {
+    //for (let z = 0; z < numbersArr.length; z++) {
+    let numbers = numbersArr[index].pop();
+    finalNumbersArr.push(numbers);
   })
 
-
-  let numbersArr: string[] = [];
-  for (let i = 0; i < matrix.length; i++) {
-    numbersArr.push(matrix[i][matrix[i].length - 1]);
-  }
-  console.log(numbersArr[1].split(';'));
+  console.log(finalNumbersArr);
 }
 
-//    let numbers: string [][] = numbersArr.map(function(value, index) {
-//     return numbersArr[index].split(';');
-//   })
-//   console.log(numbers);
-//   }
-
-// getLotteryNumbers('lottery.txt');
+getNumbers();
