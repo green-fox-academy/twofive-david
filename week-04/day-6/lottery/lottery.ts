@@ -29,7 +29,6 @@ function getNumbers() {
   }
 
   numbersArr.forEach((element, index) => {
-    //for (let z = 0; z < numbersArr.length; z++) {
     let numbers = numbersArr[index].pop();
     finalNumbersArr.push(numbers);
   })
