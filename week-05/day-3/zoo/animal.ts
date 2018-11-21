@@ -1,5 +1,5 @@
 'use strict'
-export {Reptile, Mammal, Bird};
+export {Animal, Reptile, Mammal, Bird};
 
 abstract class Animal {
   private name: string;
