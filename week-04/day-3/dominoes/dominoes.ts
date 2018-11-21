@@ -40,4 +40,6 @@ function matchDominoes(arr: Domino[]): Domino[] {
 
   return result;
 }
+
 console.log(matchDominoes(dominoes));
+
