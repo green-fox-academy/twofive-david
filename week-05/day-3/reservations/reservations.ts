@@ -7,28 +7,21 @@ interface ReservationsInt {
 
 class Reservations implements ReservationsInt {
 
+  createRandomNumber(num: number) {
+    return Math.floor(Math.random() * num);
+  }
+
   getDowBooking() {
-
     const daysOfTheWeek: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-
-    function getRandomNumber(maxNum: number) {
-      return Math.floor(Math.random() * maxNum);
-    }
-    return daysOfTheWeek[getRandomNumber(7)];
+    return daysOfTheWeek[this.createRandomNumber(7)];
   }
 
   getCodeBooking() {
-
     const characters: string[] = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789'.split('');
-
-    function getRandomNumber(maxNum: number) {
-      return Math.floor(Math.random() * maxNum);
-    }
-
     let bookingCode: string = '';
 
     for (let i = 0; i < 8; i++) {
-      bookingCode += characters[getRandomNumber(characters.length)];
+      bookingCode += characters[this.createRandomNumber(characters.length)];
     }
     return bookingCode;
   }
