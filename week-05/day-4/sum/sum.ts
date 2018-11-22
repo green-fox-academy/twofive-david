@@ -1,12 +1,12 @@
 'use strict'
 import { test } from "../../../node_modules/tape";
 
-const myArr = [1, 2, 4, 6];
+const myArr = [6, 3, 4];
 
 class Sum {
 
   sum(arr: number[]) {
-    return arr.reduce((x, y) => x + y);
+    return arr.reduce((x, y = 0) => x + y);
   }
 }
 
