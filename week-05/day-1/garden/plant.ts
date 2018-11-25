@@ -27,4 +27,8 @@ export class Plant {
     return this.color;
   }
 
+  getName() {
+    return this.name;
+  }
+
 }

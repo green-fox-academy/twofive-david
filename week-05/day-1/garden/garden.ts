@@ -21,9 +21,9 @@ export class Garden {
     for (let plant of this.gardenPlants) {
 
       if (plant.needsWater()) {
-        console.log(`The ${plant.getColor()} ${plant.constructor.name} needs water.`);
+        console.log(`The ${plant.getColor()} ${plant.getName()} needs water.`);
       } else {
-        console.log(`The ${plant.getColor()} ${plant.constructor.name} doesn't need water.`);
+        console.log(`The ${plant.getColor()} ${plant.getName()} doesn't need water.`);
       }
     }
 
