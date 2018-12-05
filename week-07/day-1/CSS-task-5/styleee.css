@@ -1,0 +1,60 @@
+html{
+  box-sizing: border-box;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+.content{
+  width: 80%;
+  margin: auto;
+
+}
+
+.flex-container{
+  height: 600px;
+  display: flex;
+  justify-content: space-between;
+ }
+
+ .left{
+  background: orange;
+  width: 100px;
+  height: 100%;
+ }
+ 
+ .middle{
+  background: red;
+  width: 100px;
+  height: 100%;
+  flex-grow: 0.9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+ }
+
+ .right{
+  background: purple;
+  width: 100px;
+  height: 100%;
+ }
+
+ .middle .fixed{
+   height: 70px;
+   width: 70px;
+   background: black;
+   margin: 20px;
+
+ }
+
+header{
+  height: 100px;
+  background: aqua;
+}
+
+footer{
+  height: 100px;
+  background: blue;
+}
+
