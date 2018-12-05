@@ -12,13 +12,13 @@ body{
 }
 
 .content{
-  height: 700px;
+  height: 650px;
 }
 
 header{
   width: 80%;
   height: 80px;
-  background-color: purple;
+  background-color: #b02aff;
   position: fixed;
 }
 
@@ -62,7 +62,7 @@ nav{
 main{
   width: 100px;
   height: 100%;
-  background-color: orange;
+  background-color: #ffd62a;
   flex-grow: 2;
 }
 
@@ -70,14 +70,14 @@ aside{
   padding-top: 3%;
   width: 100px;
   height: 100%;
-  background-color: greenyellow;
+  background-color: #51d400;
   flex-grow: 1;
 }
 
 section{
   height: 40px;
   width: 90%;
-  background: grey;
+  background: #573559;
   margin: 2% auto; 
 }
 
@@ -88,12 +88,13 @@ article{
 }
 
 .mock-text{
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
+
 hr{
-  border-top: 3px solid black;
-  padding-bottom: 4%;
+  border-top: 4px solid black;
+  margin-bottom: 15px;
 }
 
 .gallery{
@@ -107,6 +108,14 @@ hr{
   width: 25%;
   flex: 0 0 23%;
   height: 90px;
-  background-color: red;
+  background-color: #e90020;
   margin-top: 3%;
+}
+
+.bottom{
+  display: flex;
+}
+
+.bottom-article{
+  width: 40%;
 }
