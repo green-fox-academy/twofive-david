@@ -1,0 +1,58 @@
+html{
+  box-sizing: border-box;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+body{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content{
+  height: 800px;
+}
+
+header{
+  width: 80%;
+  height: 80px;
+  background-color: purple;
+  position: fixed;
+}
+
+ul{
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+
+nav li{
+  list-style-type: none;
+  height: 40px;
+  width: 100px;
+  background-color: cyan;
+  margin: 1%;
+}
+
+.wrapper{
+  display: flex;
+  height: inherit;
+}
+
+main{
+  width: 100px;
+  height: 100%;
+  background-color: yellow;
+  flex-grow: 2;
+}
+
+aside{
+  width: 100px;
+  height: 100%;
+  background-color: greenyellow;
+  flex-grow: 1;
+}
