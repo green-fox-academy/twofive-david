@@ -1,0 +1,112 @@
+html{
+  box-sizing: border-box;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+body{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content{
+  height: 700px;
+}
+
+header{
+  width: 80%;
+  height: 80px;
+  background-color: purple;
+  position: fixed;
+}
+
+ul{
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+
+
+nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left li{
+  list-style-type: none;
+  height: 40px;
+  width: 100px;
+  background-color: cyan;
+  margin: 10px;
+}
+
+
+.right li{
+  list-style-type: none;
+  height: 40px;
+  width: 40px;
+  background-color: cyan;
+  margin: 10px;
+}
+
+.wrapper{
+  padding-top: 80px;
+  display: flex;
+  height: inherit;
+}
+
+main{
+  width: 100px;
+  height: 100%;
+  background-color: orange;
+  flex-grow: 2;
+}
+
+aside{
+  padding-top: 3%;
+  width: 100px;
+  height: 100%;
+  background-color: greenyellow;
+  flex-grow: 1;
+}
+
+section{
+  height: 40px;
+  width: 90%;
+  background: grey;
+  margin: 2% auto; 
+}
+
+article{
+  width: 90%;
+  margin: 0 auto;
+
+}
+
+.mock-text{
+  margin-top: 20px;
+}
+
+hr{
+  border-top: 3px solid black;
+  padding-bottom: 4%;
+}
+
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+
+.box{
+  width: 25%;
+  flex: 0 0 23%;
+  height: 90px;
+  background-color: red;
+  margin-top: 3%;
+}
