@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: innerHTML, textContent</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <ul>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+      <li>placeholder</li>
+    </ul>
+    <button class = 'content'>Change Content</button>
+    <button class = 'color'>Change Color</button>
+
+
+    <script>
+
+      const contentButton = document.querySelector('button.content');
+      const colorButton = document.querySelector('button.color');
+      
+      contentButton.onclick = changeContent;
+      colorButton.onclick = changeColor;
+
+
+      function changeContent() {
+        const newContent = ['apple', 'banana', 'cat', 'dog'];
+        const listItems = document.querySelectorAll('li');
+
+        for (let i = 0; i < listItems.length; i++) {
+          let oneItem = listItems[i];
+          oneItem.textContent = newContent[i];
+        }
+      }
+
+      function changeColor() {
+        const myList = document.querySelector('ul');
+        myList.classList.add('limegreen')
+      }
+
+    </script>
+  </body>
+</html>
