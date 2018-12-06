@@ -54,6 +54,8 @@
         if (planetData[i].asteroid) {
           newLi.textContent = planetData[i].content;
           myAsteroids.appendChild(newLi);
+          newLi.classList.add(planetData[i].category);
+
         }
       }
     }
