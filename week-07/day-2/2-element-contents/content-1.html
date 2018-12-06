@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
+
+<body>
+  <p class="apple">apple</p>
+  <p class="balloon">banana</p>
+  <p class="cat">car</p>
+  <p class="animals">goat rabbit <strong>cat</strong> dog</p>
+
+  <!-- You can work in the html or in a separate js file. Like:
+    <script>
+    1)  Fill every paragraph with the last one's content.
+    2)  Do the same again, but you should keep the cat strong.
+    </script>
+    OR
+    <script src="content-1.js"></script> -->
+
+  <script>
+    const myParagraphs = document.querySelectorAll('p');
+
+    function changeText() {
+      const newText = document.querySelector('.animals').textContent;
+
+      for (let i = 0; i < myParagraphs.length; i++) {
+        let para = myParagraphs[i];
+        para.textContent = newText;
+      }
+    }
+
+    function changeTextWithBold() {
+      const newHtml = document.querySelector('.animals').innerHTML;
+
+      for (let i = 0; i < myParagraphs.length; i++) {
+        let para = myParagraphs[i];
+        para.innerHTML = newHtml;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
