@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: CreateElement</title>
+</head>
+
+<body>
+  <ul class="asteroids">
+    <li id="b325" class="asteroid">The King</li>
+    <li class="asteroid b326">The Conceited Man</li>
+  </ul>
+  <div class="container"></div>
+  <button id = "myButt">Do a bunch of stuff!!</button>
+
+  <!-- You can work in the html or in a separate js file. Like:
+    <script>
+      Add an item that says 'The Green Fox' to the asteroid list.
+      Add an item that says 'The Lamplighter' to the asteroid list.
+      Add a heading saying 'I can add elements to the DOM!' to the .container.
+      Add an image, any image, to the container.
+    </script>
+    OR
+    <script src="createelement-1.js"></script> -->
+  <script>
+
+    const myButton = document.getElementById('myButt');
+    myButton.onclick = () => {
+      addGreenFox();
+      addLampLighter();
+      addHeading();
+      addImage();
+    };
+
+    function addGreenFox() {
+      const myAsteroids = document.querySelector('ul.asteroids');
+      const newLi = document.createElement('li');
+      newLi.textContent = 'The Green Fox';
+      myAsteroids.appendChild(newLi);
+    }
+
+    function addLampLighter() {
+      const myAsteroids = document.querySelector('ul.asteroids');
+      const newLi = document.createElement('li');
+      newLi.textContent = 'The Lamplighter';
+      myAsteroids.appendChild(newLi);
+    }
+
+    function addHeading() {
+      const myConti = document.querySelector('div.container');
+      const newHeader = document.createElement('h1');
+      newHeader.innerText = 'I can add elements to the DOM!';
+      myConti.appendChild(newHeader);
+    }
+
+    function addImage() {
+      const myConti = document.querySelector('div.container');
+      const newImg = document.createElement('img');
+      newImg.setAttribute('src', 'http://1.bp.blogspot.com/-Y-V--rugqe4/TV8rdAoPLCI/AAAAAAAAACg/Ur8f2p3QEJw/s400/poop.png');
+      myConti.appendChild(newImg);
+    }
+    
+  </script>
+</body>
+
+</html>
