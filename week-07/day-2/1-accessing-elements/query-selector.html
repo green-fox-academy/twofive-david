@@ -16,17 +16,23 @@
 
   <script>
 
-    const king = document.querySelector('#b325');
+    const king = document.querySelector('#b325').textContent;
     console.log(king);
 
     const businessLamp = document.querySelectorAll('.big');
-    console.log(businessLamp);
+    console.log(businessLamp[0].textContent, businessLamp[1].textContent);
 
     const conceitedKing = document.querySelectorAll('.container div');
-    console.log(conceitedKing);
+    for (let i = 0; i < conceitedKing.length; i++) {
+      let subject = conceitedKing[i].textContent;
+      alert('Hello ' + subject);
+    }
 
-    const noBusiness = document.querySelectorAll('div.asteroid');
-    console.log(noBusiness);
+    const noBusiness = document.querySelectorAll('div.asteroid');  
+    for (let i = 0; i < noBusiness.length; i++) {
+      let man = noBusiness[i].textContent;
+      console.log(man);
+    }
 
   </script>
 
