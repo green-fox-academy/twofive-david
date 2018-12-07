@@ -6,13 +6,16 @@ h1{
   text-align: center;
   margin-bottom: 0;
   font-family: sans-serif;
+  font-family: 'Permanent Marker', cursive;
 }
 
 h3{
+  font-family: 'Permanent Marker', cursive;
   margin-bottom: 5px;
 }
 
 p{
+  font-family: 'Source Sans Pro', sans-serif;
   margin-top: 5px;
 }
 
@@ -26,6 +29,7 @@ p{
 
 #main-slider{
   display: flex;
+  box-shadow: 39px 65px 125px -18px rgba(0,0,0,0.75);
 }
 
 .main-img{
@@ -65,6 +69,7 @@ img.photo{
 }
 #thumbnails{
   display: flex;
+  margin-top: 20px;
   justify-content: center;
 }
 
@@ -72,6 +77,6 @@ img.photo{
   height: 70px;
   width: 70px;
   margin: 1%;
-  background-color: #E1471A;
   cursor: pointer;
+  box-shadow: 10px 39px 125px -10px rgba(0,0,0,0.75);
 }
