@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.content{
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-slider{
+  display: flex;
+}
+
+.main-img{
+  width: 608px;
+  height: 342px;
+  background-color: #632021;
+}
+
+img.point-right{
+  transform: rotate(180deg);
+}
+
+#thumbnails{
+  display: flex;
+  justify-content: center;
+}
+
+.img-box{
+  height: 70px;
+  width: 70px;
+  margin: 1%;
+  background-color: #E1471A;
+  cursor: pointer;
+}
