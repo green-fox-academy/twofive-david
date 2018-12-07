@@ -1,6 +1,7 @@
 'use strict'
 
 const thumbnails = document.querySelector('#thumbnails');
+let currentIndex = 0;
 
 const myImages = [
   {
@@ -57,6 +58,7 @@ function createMainImage(index = 0) {
   const mainDescription = document.querySelector('.img-description');
   mainDescription.appendChild(picTitle);
   mainDescription.appendChild(picDescription);
+  currentIndex = index;
 }
 createMainImage();
 //populate thumbnails with the for loop below
@@ -85,10 +87,9 @@ thumbnailClick.forEach((elem, index) => elem.onclick = () => {
 const arrows = document.querySelectorAll('.arrow');
 
 arrows.forEach(elem => elem.onclick = () => {
-  
-  if (elem.classList.contains('point-right')) {
-    console.log('jobb');
-  } else {
-    console.log('bal');
+  if (elem.classList.contains('point-right') && currentIndex < myImages.length - 1) {
+    createMainImage(currentIndex + 1);
+  } else if (!elem.classList.contains('point-right') && currentIndex >= 1) {
+    createMainImage(currentIndex - 1);
   }
-})
+});
