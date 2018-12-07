@@ -2,6 +2,7 @@
 
 const thumbnails = document.querySelector('#thumbnails');
 
+
 const myImages = [
   {
     title: 'African Ballsack Storck',
@@ -47,3 +48,18 @@ for (let i = 0; i < myImages.length; i++) {
   newDiv.appendChild(newImg);
   thumbnails.appendChild(newDiv);
 }
+
+const thumbnailClick = document.querySelectorAll('.img-box');
+
+
+thumbnailClick.forEach((elem, index) => elem.onclick = () => {
+  const thisPicture = myImages[index];
+  const oldPicture = document.querySelector('.main');
+  const picTitle = document.querySelector('h3');
+  const picDescription = document.querySelector('p');
+
+  oldPicture.setAttribute('src', thisPicture.src);
+  oldPicture.setAttribute('alt', thisPicture.title);
+  picTitle.textContent = thisPicture.title;
+  picDescription.textContent = thisPicture.description;
+});
