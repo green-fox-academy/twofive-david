@@ -2,7 +2,7 @@
 
 const thumbnails = document.querySelector('#thumbnails');
 
-const myIMages = [
+const myImages = [
   {
     title: 'African Ballsack Storck',
     src: 'img/african-ballsack-storck.jpg',
@@ -20,7 +20,7 @@ const myIMages = [
   },
   {
     title: 'Giraffe Couple',
-    src: 'img/giraffe-couple.jpg',
+    src: 'img/girraffe-couple.jpg',
     description: "Lorizzle ma nizzle dolor crackalackin yo, we gonna chung adipiscing elit. Rizzle sapien velizzle, dope volutpizzle, suscipizzle bling bling, tellivizzle vizzle, funky fresh. Pellentesque eget tortizzle. Sizzle erizzle."
   },
   {
@@ -35,4 +35,15 @@ const myIMages = [
   },
 ]
 
-console.log(thumbnails);
+//populate thumbnails with the for loop below
+
+for (let i = 0; i < myImages.length; i++) {
+  const newDiv = document.createElement('div');
+  newDiv.classList.add('img-box');
+  const newImg = document.createElement('img');
+  newImg.classList.add('photo');
+  newImg.setAttribute('src', myImages[i].src);
+  newImg.setAttribute('alt', myImages[i].title);
+  newDiv.appendChild(newImg);
+  thumbnails.appendChild(newDiv);
+}
