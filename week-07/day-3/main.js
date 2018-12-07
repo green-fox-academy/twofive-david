@@ -2,7 +2,6 @@
 
 const thumbnails = document.querySelector('#thumbnails');
 
-
 const myImages = [
   {
     title: 'African Ballsack Storck',
@@ -36,6 +35,30 @@ const myImages = [
   },
 ]
 
+//create main image
+function createMainImage(index = 0) {
+
+  const oldPicture = document.querySelector('.main');
+  const mainImage = document.querySelector('.main-img');
+  const newImg = document.createElement('img');
+
+  if (oldPicture) {
+    mainImage.removeChild(oldPicture);
+  }
+
+  newImg.classList.add('photo', 'main');
+  newImg.setAttribute('src', myImages[index].src);
+  newImg.setAttribute('alt', myImages[index].title);
+  mainImage.appendChild(newImg);
+  const picTitle = document.querySelector('h3');
+  picTitle.textContent = myImages[index].title;
+  const picDescription = document.querySelector('p');
+  picDescription.textContent = myImages[index].description;
+  const mainDescription = document.querySelector('.img-description');
+  mainDescription.appendChild(picTitle);
+  mainDescription.appendChild(picDescription);
+}
+createMainImage();
 //populate thumbnails with the for loop below
 
 for (let i = 0; i < myImages.length; i++) {
@@ -49,17 +72,23 @@ for (let i = 0; i < myImages.length; i++) {
   thumbnails.appendChild(newDiv);
 }
 
+//click on thumbnails to change main image
+
 const thumbnailClick = document.querySelectorAll('.img-box');
 
-
 thumbnailClick.forEach((elem, index) => elem.onclick = () => {
-  const thisPicture = myImages[index];
-  const oldPicture = document.querySelector('.main');
-  const picTitle = document.querySelector('h3');
-  const picDescription = document.querySelector('p');
-
-  oldPicture.setAttribute('src', thisPicture.src);
-  oldPicture.setAttribute('alt', thisPicture.title);
-  picTitle.textContent = thisPicture.title;
-  picDescription.textContent = thisPicture.description;
+  createMainImage(index);
 });
+
+//click on the arrows to change images in main img
+
+const arrows = document.querySelectorAll('.arrow');
+
+arrows.forEach(elem => elem.onclick = () => {
+  
+  if (elem.classList.contains('point-right')) {
+    console.log('jobb');
+  } else {
+    console.log('bal');
+  }
+})
