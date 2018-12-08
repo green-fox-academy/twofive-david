@@ -27,7 +27,7 @@ export class Santa {
     let giftCount = 0;
 
     kidsArr.forEach(kid => {
-      if (this["number of gifts"] > 1 && kid.isGood) {
+      if (this["number of gifts"] > 1 && kid.getHappy()) {
         kid.getGift();
         this["number of gifts"]--;
         giftCount++;

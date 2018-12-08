@@ -17,6 +17,10 @@ export class Kid {
     this.isHappy = true;
   }
 
+  getHappy(): boolean {
+    return this.isHappy;
+  }
+
   introduce(): string {
     if (this.isHappy) {
       return `My name is ${this.name}, I am ${this.age} years old. I am happy!`
