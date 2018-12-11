@@ -12,7 +12,7 @@ xhr.onload = function () {
   const myData = JSON.parse(xhr.responseText).data;
   console.log(myData[0]);
 
-  for (let i = 0; i < myData.length; i++) {
+  myData.forEach((el, i) => {
     const myFrame = document.createElement('img');
 
     myFrame.setAttribute('src', myData[i].images['480w_still'].url);
@@ -20,9 +20,9 @@ xhr.onload = function () {
     myFrame.setAttribute('height', 200);
     myDiv.appendChild(myFrame);
 
-    myFrame.onclick = function() {
+    myFrame.onclick = function () {
       myFrame.setAttribute('src', myData[i].images['downsized_medium'].url);
     }
-  }
+  })
 }
 xhr.send();
