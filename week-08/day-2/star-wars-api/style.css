@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+label, input {
+  display: block;
+}
+
+#main {
+  width: 900px;
+  margin: auto;
+}
+
+button {
+  width:150px;
+  height: 21.33px;
+  margin-left: 20px;
+  align-self: flex-end;
+}
+
+.flexCont {
+  display: flex;
+  justify-content: center;
+}
+
+.characterBtn {
+  cursor: pointer;
+}
