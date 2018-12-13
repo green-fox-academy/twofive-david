@@ -1,34 +1,55 @@
 'use strict'
 
-const formOne = document.forms[0];
-const formTwo = document.forms[1];
+const main = document.querySelector('.main');
 
-const animalButtons = document.querySelectorAll('input[name="fav-animal"]');
+const victor = document.getElementById("goldfish");
+const dog = document.querySelector('input#dog');
+const cat = document.querySelector('input#cat');
 
+const animalButton = document.querySelector('.animal-button');
+const catBtn = document.querySelector('button.cat-button');
+
+const noBox = document.querySelector('input#no');
+const yesBox = document.querySelector('input#yes');
+
+let thankYouMessage = "";
 
 const checkAnimals = () => {
-
-  const dog = document.querySelector('input#dog');
-  const cat = document.querySelector('input#cat');
-  const animalButton = document.querySelector('.animal-button');
-
   if (dog.checked || cat.checked) {
-    animalButton.disabled = false
+    animalButton.disabled = false;
+    thankYouMessage = "Thank you, you've successfully signed up for cat facts";
   } else {
     animalButton.disabled = true;
   }
 }
 
 const checkYes = () => {
- const yesBox = document.querySelector('input#yes');
- const catBtn = formTwo.querySelector('button');
-
- if (yesBox.checked) {
+  if (yesBox.checked) {
     catBtn.disabled = false;
- } else {
-  catBtn.disabled = true;
- }
+    thankYouMessage = 'Thank you, you\'ve successfully signed up for cat facts';
+  } else {
+    catBtn.disabled = true;
+  }
 }
- 
-formOne.addEventListener('change', checkAnimals);
-formTwo.addEventListener('change', checkYes);
+
+const checkVictor = () => {
+  if (victor.checked && noBox.checked) {
+    animalButton.disabled = false;
+    thankYouMessage = 'Sigh, we still added you to the cat facts list';
+  }
+}
+
+const signUp = () => {
+  alert(thankYouMessage);
+}
+
+main.addEventListener('click', e => {
+  if (e.target.type === 'radio') {
+    checkYes();
+    checkAnimals();
+    checkVictor();
+  }
+})
+
+animalButton.addEventListener('click', signUp);
+catBtn.addEventListener('click', signUp);
