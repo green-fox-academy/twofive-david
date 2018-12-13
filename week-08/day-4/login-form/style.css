@@ -39,6 +39,10 @@ input {
   margin: 10px 0;
 }
 
+input:focus {
+  border-color: greenyellow;
+}
+
 p {
   margin-top: 5px;
   font-size: 10px;
