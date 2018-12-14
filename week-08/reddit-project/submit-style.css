@@ -1,0 +1,35 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+  background-color: #eee;
+  width: 60%;
+}
+
+header{
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("./images/space-background.jpg");
+  background-size: cover;
+  color: #ffffff;
+}
+
+h1{
+  letter-spacing: 2em;
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 100;
+}
