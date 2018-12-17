@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static('static'));
 
 
-const alcoholList = ['gin', 'vodka', 'rum', 'tequila'];
+const alcoholList = ['all','gin', 'vodka', 'rum', 'tequila'];
 
 const cocktails = [
   { name: 'GIN FIZZ', price: 1520, contains: ['gin', 'sugar', 'lemon juice', 'soda'], isAlcoholic: true },
@@ -31,13 +31,12 @@ const cocktails = [
 
 app.get('/', (req, res) => {
 
-  if(req.query.alcohol) {
+  if(req.query.alcohol !== undefined && req.query.alcohol !== 'all') {
     const myBooze = req.query.alcohol;
 
     let newList = cocktails.filter(element => {
       return element.contains.includes(myBooze);
     });
-    //res.send(myBooze);
     res.render('index', {ingredients: alcoholList, drinks: newList});
   } else {
     res.render('index', {ingredients: alcoholList, drinks: cocktails});
