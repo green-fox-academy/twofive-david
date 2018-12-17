@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 70%;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 2.5em;
+  margin-top: 1%;
+}
+
+h2{
+  margin-bottom: 1%;
+}
+
+ul{
+  width:50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+li{
+  list-style-type: none;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #6f3d97;
+}
+
+article{
+  margin-bottom: 20px;
+  padding: 1em;
+}
+
+div.drinks-menu article:nth-child(odd){
+background-color: antiquewhite;
+}
