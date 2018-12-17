@@ -17,7 +17,11 @@
   <div class="drinks-menu">
   <% drinks.forEach(elem => { %>
     <article>
+      <% if(elem.isAlcoholic){ %>
       <h2><%= elem.name %></h2>
+      <% } else { %>
+        <h2><%= elem.name + ' (non-alcoholic)'%></h2>
+        <% } %>
       <p><%= elem.contains %></p>
       <p><%= elem.price %></p>
      </article>
