@@ -44,3 +44,7 @@ article{
 div.drinks-menu article:nth-child(odd){
 background-color: antiquewhite;
 }
+
+a{
+  text-decoration: none;
+}

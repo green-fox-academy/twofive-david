@@ -30,5 +30,16 @@ const cocktails = [
 ];
 
 app.get('/', (req, res) => {
-  res.render('index', {ingredients: alcoholList, drinks: cocktails});
+
+  if(req.query.alcohol) {
+    const myBooze = req.query.alcohol;
+
+    let newList = cocktails.filter(element => {
+      return element.contains.includes(myBooze);
+    });
+    //res.send(myBooze);
+    res.render('index', {ingredients: alcoholList, drinks: newList});
+  } else {
+    res.render('index', {ingredients: alcoholList, drinks: cocktails});
+  }
 })
