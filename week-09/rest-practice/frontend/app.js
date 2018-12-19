@@ -5,6 +5,7 @@ const app = express();
 const port = 8080;
 const path = require('path');
 
+app.use(express.json());
 app.use('/assets', express.static('assets'));
 
 app.get('/', (req, res) => {
@@ -58,6 +59,26 @@ app.get('/appenda/:appended', (req, res) => {
   const word = `${req.params.appended}a`;
   req.params.appended = word;
   res.send(req.params);
+})
+
+app.post('/dountil/:action', (req, res) => {
+  let number = req.body.until;
+  let action = req.params.action;
+
+  if (action === "sum") {
+    let result = 0;
+    for (let i = 1; i <= number; i++) {
+      result += i;
+    }
+    res.json({ "result": result });
+  } else if (action === "factor") {
+    let result = 1;
+    for (let i = 1; i <= number; i++) {
+      result *= i;
+    }
+    res.json({ "result": result });
+  }
+
 })
 
 app.listen(port, () => console.log(`Yo dawgs, app is now listening on port ${port}`));
