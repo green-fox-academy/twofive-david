@@ -31,4 +31,33 @@ app.get('/doubling', (req, res) => {
   }
 })
 
+app.get('/greeter', (req, res) => {
+  const name = req.query.name;
+  const title = req.query.title;
+
+  if (name && title) {
+    res.send({
+      "welcome_message": `Oh, hi there ${name} my dear ${title}!`
+    })
+  } else if (title) {
+    res.send(
+      {
+        "error": "Please provide a name!"
+      }
+    )
+  } else if (name) {
+    res.send(
+      {
+        "error": "Please provide a title!"
+      }
+    )
+  } else {
+    res.send(
+      {
+        "error": "Give us more biatch!!!"
+      }
+    )
+  }
+})
+
 app.listen(port, () => console.log(`Yo dawgs, app is now listening on port ${port}`));
