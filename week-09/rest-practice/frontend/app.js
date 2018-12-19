@@ -40,24 +40,24 @@ app.get('/greeter', (req, res) => {
       "welcome_message": `Oh, hi there ${name} my dear ${title}!`
     })
   } else if (title) {
-    res.send(
+    res.json(
       {
         "error": "Please provide a name!"
       }
     )
   } else if (name) {
-    res.send(
+    res.json(
       {
         "error": "Please provide a title!"
       }
     )
-  } else {
-    res.send(
-      {
-        "error": "Give us more biatch!!!"
-      }
-    )
   }
+})
+
+app.get('/appenda/:appended', (req, res) => {
+  const word = `${req.params.appended}a`;
+  req.params.appended = word;
+  res.send(req.params);
 })
 
 app.listen(port, () => console.log(`Yo dawgs, app is now listening on port ${port}`));
