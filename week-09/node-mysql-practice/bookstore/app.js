@@ -6,6 +6,7 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 
+app.use(express.json());
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -23,3 +24,19 @@ connection.connect(err => {
 })
 
 app.listen(port, () => console.log(`App now listening on port ${port}`))
+
+app.get('/', (req, res) => {
+  res.send('Welcome to my muthafucking bookstore!!!');
+})
+
+app.get('/booknames', (req, res) => {
+  const booknames = 'SELECT Book_name FROM Book_mast';
+  connection.query(booknames, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+
+    const booksArr = data.map(elem => elem["Book_name"]);
+    res.send(booksArr);
+  })
+})
