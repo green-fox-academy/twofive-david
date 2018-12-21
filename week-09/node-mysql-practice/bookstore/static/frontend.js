@@ -1,5 +1,7 @@
 'use strict'
 
+const form = document.querySelector('form');
+
 const xhr = new XMLHttpRequest();
 
 xhr.onload = () => {
@@ -15,6 +17,7 @@ const myTable = document.querySelector('.my-table');
 
 const getMyData = (data) => {
 
+  myTable.innerHTML = "";
   const tr = document.createElement('tr');
   const thTitle = document.createElement('th');
   const thAuth = document.createElement('th');
@@ -45,34 +48,40 @@ const getMyData = (data) => {
     const tdCat = document.createElement('td');
     const tdPub = document.createElement('td');
     const tdPrice = document.createElement('td');
-    // const tdButton = document.createElement('td');
-    // const button = document.createElement('button');
     tdTitle.textContent = e.book_name;
     tdAuth.textContent = e.aut_name;
     tdCat.textContent = e.cate_descrip;
     tdPub.textContent = e.pub_name;
     tdPrice.textContent = e.book_price;
-    // button.textContent = 'Delete';
-    // button.setAttribute('id', e.book_name);
     tr.appendChild(tdTitle);
     tr.appendChild(tdAuth);
     tr.appendChild(tdCat);
     tr.appendChild(tdPub);
     tr.appendChild(tdPrice);
-    // tdButton.appendChild(button);
-    // tr.appendChild(tdButton);
     myTable.appendChild(tr);
 
     //add cetegories to category array
-    if(categories.indexOf(e.cate_descrip) === -1){
+    if (categories.indexOf(e.cate_descrip) === -1) {
       categories.push(e.cate_descrip);
     }
     //add publishers to publisher array
-    if(publishers.indexOf(e.pub_name) === -1){
+    if (publishers.indexOf(e.pub_name) === -1) {
       publishers.push(e.pub_name);
     }
-    
+
   });
+  
+  let baseOption = document.createElement('option');
+  baseOption.textContent = 'All';
+  baseOption.setAttribute('value', 'all');
+  selectCategory.appendChild(baseOption);
+  
+  
+  
+  let basePubOption = document.createElement('option');
+  basePubOption.textContent = 'All';
+  basePubOption.setAttribute('value', 'all');
+  selectPub.appendChild(basePubOption);
 
   //create category options
   categories.forEach(elem => {
@@ -81,14 +90,22 @@ const getMyData = (data) => {
     option.setAttribute('value', elem);
     selectCategory.appendChild(option);
   })
- 
   publishers.forEach(elem => {
-  let option = document.createElement('option');
+    let option = document.createElement('option');
     option.textContent = elem;
     option.setAttribute('value', elem);
     selectPub.appendChild(option);
   })
-
-
 }
 
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const catSelector = document.querySelector('select#category');
+  const pubSelector = document.querySelector('select#publisher');
+  const minPrice = document.querySelector('input#min_price');
+  const maxPrice = document.querySelector('input#max_price');
+
+  xhr.open('GET', `http://localhost:3000/fulldata?${catSelector.id}=${catSelector.value}&${pubSelector.id}=${pubSelector.value}&${minPrice.id}=${minPrice.value}&${maxPrice.id}=${maxPrice.value}`);
+  xhr.send();
+
+});
