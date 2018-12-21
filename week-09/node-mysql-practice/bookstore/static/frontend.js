@@ -1,6 +1,9 @@
 'use strict'
 
 const form = document.querySelector('form');
+const myTable = document.querySelector('.my-table');
+
+//XML call 1 to create the table
 
 const xhr = new XMLHttpRequest();
 
@@ -10,24 +13,74 @@ xhr.onload = () => {
     getMyData(response);
   }
 };
-
 xhr.open('GET', '/fulldata');
 xhr.send();
-const myTable = document.querySelector('.my-table');
+
+//XML call 2 to get list of categories
+
+const xhr2 = new XMLHttpRequest();
+xhr2.onload = () => {
+  if (xhr2.status === 200) {
+    const response = JSON.parse(xhr2.response);
+    createCategories(response);
+  }
+}
+xhr2.open('GET', '/categories');
+xhr2.send();
+
+const createCategories = (data) => {
+  const selectCategory = document.querySelector('select#category');
+  let baseOption = document.createElement('option');
+  baseOption.textContent = 'All';
+  baseOption.setAttribute('value', 'all');
+  selectCategory.appendChild(baseOption);
+
+  data.forEach(elem => {
+    let option = document.createElement('option');
+    option.textContent = elem.cate_descrip;
+    option.setAttribute('value', elem.cate_descrip);
+    selectCategory.appendChild(option);
+  })
+}
+
+//XML call 3 - to get list of publishers 
+
+const xhr3 = new XMLHttpRequest();
+xhr3.onload = () => {
+  if (xhr3.status === 200) {
+    const response = JSON.parse(xhr3.response);
+    createPublishers(response);
+  }
+}
+xhr3.open('GET', '/publishers');
+xhr3.send();
+
+const createPublishers = (data) => {
+
+  const selectPub = document.querySelector('select#publisher');
+  let basePubOption = document.createElement('option');
+  basePubOption.textContent = 'All';
+  basePubOption.setAttribute('value', 'all');
+  selectPub.appendChild(basePubOption);
+
+  data.forEach(elem => {
+    let option = document.createElement('option');
+    option.textContent = elem.pub_name;
+    option.setAttribute('value', elem.pub_name);
+    selectPub.appendChild(option);
+  })
+}
 
 const getMyData = (data) => {
 
   myTable.innerHTML = "";
+
   const tr = document.createElement('tr');
   const thTitle = document.createElement('th');
   const thAuth = document.createElement('th');
   const thCat = document.createElement('th');
   const thPub = document.createElement('th');
   const thPrice = document.createElement('th');
-  const selectCategory = document.querySelector('select#category');
-  const selectPub = document.querySelector('select#publisher');
-  let publishers = [];
-  let categories = [];
 
   //create table
   thTitle.textContent = "Title";
@@ -41,7 +94,9 @@ const getMyData = (data) => {
   tr.appendChild(thPub);
   tr.appendChild(thPrice);
   myTable.appendChild(tr);
+
   data.forEach(e => {
+
     const tr = document.createElement('tr');
     const tdTitle = document.createElement('td');
     const tdAuth = document.createElement('td');
@@ -59,43 +114,7 @@ const getMyData = (data) => {
     tr.appendChild(tdPub);
     tr.appendChild(tdPrice);
     myTable.appendChild(tr);
-
-    //add cetegories to category array
-    if (categories.indexOf(e.cate_descrip) === -1) {
-      categories.push(e.cate_descrip);
-    }
-    //add publishers to publisher array
-    if (publishers.indexOf(e.pub_name) === -1) {
-      publishers.push(e.pub_name);
-    }
-
   });
-  
-  let baseOption = document.createElement('option');
-  baseOption.textContent = 'All';
-  baseOption.setAttribute('value', 'all');
-  selectCategory.appendChild(baseOption);
-  
-  
-  
-  let basePubOption = document.createElement('option');
-  basePubOption.textContent = 'All';
-  basePubOption.setAttribute('value', 'all');
-  selectPub.appendChild(basePubOption);
-
-  //create category options
-  categories.forEach(elem => {
-    let option = document.createElement('option');
-    option.textContent = elem;
-    option.setAttribute('value', elem);
-    selectCategory.appendChild(option);
-  })
-  publishers.forEach(elem => {
-    let option = document.createElement('option');
-    option.textContent = elem;
-    option.setAttribute('value', elem);
-    selectPub.appendChild(option);
-  })
 }
 
 form.addEventListener('submit', (e) => {
@@ -107,5 +126,4 @@ form.addEventListener('submit', (e) => {
 
   xhr.open('GET', `http://localhost:3000/fulldata?${catSelector.id}=${catSelector.value}&${pubSelector.id}=${pubSelector.value}&${minPrice.id}=${minPrice.value}&${maxPrice.id}=${maxPrice.value}`);
   xhr.send();
-
 });

@@ -79,3 +79,26 @@ app.get('/fulldata', (req, res) => {
     res.send(data);
   })
 })
+
+app.get('/categories', (req,res) => {
+  const sqlstring = 'SELECT cate_descrip FROM category;'
+
+  connection.query(sqlstring, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json(data);
+  })
+
+})
+
+app.get('/publishers', (req,res) => {
+  const sqlstring = 'SELECT pub_name FROM publisher;'
+
+  connection.query(sqlstring, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json(data);
+  })
+})
