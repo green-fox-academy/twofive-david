@@ -3,13 +3,19 @@
 const myButton = document.querySelector('#btn');
 const inPut = document.querySelector('#myTextInput');
 const nameField = document.querySelector('ul.nameDisplay')
-//const characterButton = document.querySelectorAll('.characterBtn');
+const movieField = document.querySelector('ul.filmDisplay')
 
 function createCharItem(arr, index) {
   const newLi = document.createElement('li');
   newLi.textContent = arr[index].name;
   newLi.className = "characterBtn";
   nameField.appendChild(newLi);
+}
+
+function createMovieList(title) {
+  const newLi = document.createElement('li');
+  newLi.textContent = title;
+  movieField.appendChild(newLi);
 }
 
 function loadMore(url) {
@@ -34,6 +40,9 @@ function loadMore(url) {
 
 myButton.onclick = () => {
 
+  nameField.innerHTML = '';
+  movieField.innerHTML = '';
+
   let keyWord = inPut.value;
 
   const xhr = new XMLHttpRequest();
@@ -56,7 +65,6 @@ myButton.onclick = () => {
   }
   xhr.send();
 }
-
 
 //new xhr call for filtering movies
 nameField.addEventListener('click', function (e) {
@@ -83,7 +91,8 @@ function getFilmNames(arr) {
     xhr.open('GET', elem, true);
     xhr.onload = () => {
       const response = JSON.parse(xhr.responseText);
-      console.log(response.title);
+      const title = response.title;
+      createMovieList(title);
     }
     xhr.send()
   })
