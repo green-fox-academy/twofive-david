@@ -5,7 +5,7 @@ const inPut = document.querySelector('#myTextInput');
 const nameField = document.querySelector('ul.nameDisplay')
 //const characterButton = document.querySelectorAll('.characterBtn');
 
-function createItem(arr, index) {
+function createCharItem(arr, index) {
   const newLi = document.createElement('li');
   newLi.textContent = arr[index].name;
   newLi.className = "characterBtn";
@@ -21,7 +21,7 @@ function loadMore(url) {
       const myData = response.results;
 
       myData.forEach((e, i) => {
-        createItem(myData, i)
+        createCharItem(myData, i)
       });
 
       if (response.next) {
@@ -46,10 +46,10 @@ myButton.onclick = () => {
 
 
       myData.forEach((e, i) => {
-        createItem(myData, i)
+        createCharItem(myData, i)
       });
 
-      if(rawData.next) {
+      if (rawData.next) {
         loadMore(rawData.next);
       }
     }
@@ -57,28 +57,34 @@ myButton.onclick = () => {
   xhr.send();
 }
 
-// nameField.addEventListener('click', function (e) {
-//   const xhr = new XMLHttpRequest();
-//   const thisText = e.target.textContent;
-//   xhr.open('GET', `https://swapi.co/api/people`, true);
 
-//   xhr.onload = () => {
-//     if (e.target.className == 'characterBtn') {
-//       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-//         const responseData = JSON.parse(xhr.responseText);
+//new xhr call for filtering movies
+nameField.addEventListener('click', function (e) {
+  const xhr = new XMLHttpRequest();
 
-//         responseData.results.forEach((e, i) => {
-//           if (thisText === responseData.results[i].name) {
+  if (e.target.className == 'characterBtn') {
+    const thisText = e.target.textContent;
+    xhr.open('GET', `https://swapi.co/api/people/?search=${thisText}`, true);
 
-//             console.log(responseData.results[i].films);
+    xhr.onload = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        const responseData = JSON.parse(xhr.responseText);
+        const moviesArray = responseData.results[0].films;
+        getFilmNames(moviesArray);
+      }
+    }
+  }
+  xhr.send()
+})
 
-//           }
-//           //console.log(responseData.results[i].films);
-
-//         })
-
-//       }
-//     }
-//   }
-//   xhr.send()
-// })
+function getFilmNames(arr) {
+  arr.forEach(elem => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', elem, true);
+    xhr.onload = () => {
+      const response = JSON.parse(xhr.responseText);
+      console.log(response.title);
+    }
+    xhr.send()
+  })
+}
