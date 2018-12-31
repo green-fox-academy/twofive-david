@@ -60,19 +60,6 @@ const createPosts = (postsArr) => {
   });
 }
 
-//upvote and downvote
-
-// const articleContainer = document.querySelector('div.article-holder');
-
-// articleContainer.addEventListener('click', e => {
-//   if (e.target.alt === 'upvote') {
-//     console.log('UP');
-//   }
-//   if (e.target.alt === 'downvote') {
-//     console.log('DOWN');
-//   }
-// })
-
 function getClick() {
   const articles = document.querySelectorAll('article');
 
