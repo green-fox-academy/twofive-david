@@ -8,6 +8,7 @@ xhr.onload = () => {
     const response = JSON.parse(xhr.responseText);
     const posts = response.posts;
     createPosts(posts);
+    getClick();
   }
 }
 xhr.send();
@@ -61,13 +62,28 @@ const createPosts = (postsArr) => {
 
 //upvote and downvote
 
-const articleContainer = document.querySelector('div.article-holder');
+// const articleContainer = document.querySelector('div.article-holder');
 
-articleContainer.addEventListener('click', e => {
-  if (e.target.alt === 'upvote') {
-    console.log('UP');
-  }
-  if (e.target.alt === 'downvote') {
-    console.log('DOWN');
-  }
-})
+// articleContainer.addEventListener('click', e => {
+//   if (e.target.alt === 'upvote') {
+//     console.log('UP');
+//   }
+//   if (e.target.alt === 'downvote') {
+//     console.log('DOWN');
+//   }
+// })
+
+function getClick() {
+  const articles = document.querySelectorAll('article');
+
+  articles.forEach(article => {
+    article.addEventListener('click', function (e) {
+      if (e.target.alt === 'upvote') {
+        console.log('UP');
+      }
+      if (e.target.alt === 'downvote') {
+        console.log('DOWN');
+      }
+    })
+  })
+}
