@@ -24,6 +24,8 @@ const createPosts = (postsArr) => {
     const articleTitle = document.createElement('h2');
     const submittedText = document.createElement('p'); // to be modified
     const linksDiv = document.createElement('div');
+    const modifyLink = document.createElement('a');
+    const removeLink = document.createElement('a');
     newArticle.setAttribute('class', 'flex-container');
     scoreDiv.setAttribute('class', 'score');
     upVoteImg.setAttribute('src', './static/images/upvote.png');
@@ -34,10 +36,13 @@ const createPosts = (postsArr) => {
     contentDiv.setAttribute('class', 'content');
     submittedText.setAttribute('class', 'submitted-by');
     linksDiv.setAttribute('class', 'article-links');
+    modifyLink.setAttribute('href', '#');
+    removeLink.setAttribute('href', '#');
     submittedText.innerHTML = 'submitted 1 year ago by <strong>anonymous</strong>';
-    linksDiv.innerHTML = '<a href="#">Modify</a><a href="#">Remove</a>'
     voteCount.textContent = articleObj.score;
     articleTitle.textContent = articleObj.title;
+    modifyLink.textContent = 'Modify';
+    removeLink.textContent = ' Remove';
     newArticle.appendChild(scoreDiv);
     scoreDiv.appendChild(upVoteImg);
     scoreDiv.appendChild(voteCount);
@@ -45,6 +50,8 @@ const createPosts = (postsArr) => {
     newArticle.appendChild(contentDiv);
     contentDiv.appendChild(articleTitle);
     contentDiv.appendChild(submittedText);
+    linksDiv.appendChild(modifyLink);
+    linksDiv.appendChild(removeLink);
     contentDiv.appendChild(linksDiv);
     myArticles.appendChild(newArticle);
   });
