@@ -4,13 +4,15 @@ const xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'http://localhost:8000/posts');
 xhr.onload = () => {
-  if(xhr.status === 200) {
+  if (xhr.status === 200) {
     const response = JSON.parse(xhr.responseText);
     const posts = response.posts;
     createPosts(posts);
   }
 }
 xhr.send();
+
+//create list of posts
 
 const createPosts = (postsArr) => {
   const myArticles = document.querySelector('div.article-holder');
@@ -22,7 +24,7 @@ const createPosts = (postsArr) => {
     const voteCount = document.createElement('p');
     const contentDiv = document.createElement('div');
     const articleTitle = document.createElement('h2');
-    const submittedText = document.createElement('p'); // to be modified
+    const submittedText = document.createElement('p');
     const linksDiv = document.createElement('div');
     const modifyLink = document.createElement('a');
     const removeLink = document.createElement('a');
@@ -56,3 +58,16 @@ const createPosts = (postsArr) => {
     myArticles.appendChild(newArticle);
   });
 }
+
+//upvote and downvote
+
+const articleContainer = document.querySelector('div.article-holder');
+
+articleContainer.addEventListener('click', e => {
+  if (e.target.alt === 'upvote') {
+    console.log('UP');
+  }
+  if (e.target.alt === 'downvote') {
+    console.log('DOWN');
+  }
+})
