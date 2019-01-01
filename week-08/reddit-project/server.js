@@ -17,6 +17,10 @@ app.get('/posts', (req, res) => {
   res.json(mockData);
 });
 
+app.get('/add-posts', (req, res) => {
+  res.sendFile(path.join(__dirname + '/static/submit-page.html'));
+})
+
 app.listen(port, () => {
   console.log(`Yo dawgs, app is listening on port ${port}`);
 })
