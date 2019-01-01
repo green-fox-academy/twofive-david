@@ -66,10 +66,16 @@ function getClick() {
   articles.forEach(article => {
     article.addEventListener('click', function (e) {
       if (e.target.alt === 'upvote') {
-        console.log('UP');
+        let counter = this.querySelector('.vote-count');
+        let counterValue = Number(this.querySelector('.vote-count').textContent);
+        counterValue += 1;
+        counter.textContent = counterValue;
       }
       if (e.target.alt === 'downvote') {
-        console.log('DOWN');
+        let counter = this.querySelector('.vote-count');
+        let counterValue = Number(this.querySelector('.vote-count').textContent);
+        counterValue -= 1;
+        counter.textContent = counterValue;
       }
     })
   })
