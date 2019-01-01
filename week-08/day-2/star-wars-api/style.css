@@ -9,6 +9,9 @@ label, input {
 #main {
   width: 900px;
   margin: auto;
+  font-family: sans-serif;
+  font-size: 24px;
+
 }
 
 button {
@@ -25,4 +28,8 @@ button {
 
 .characterBtn {
   cursor: pointer;
+}
+
+li{
+  list-style-type: none;
 }
