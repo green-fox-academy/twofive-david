@@ -15,6 +15,8 @@ const conn = mySql.createConnection({
   password: process.env.password
 })
 
+app.use(express.json())
+
 conn.connect((err) => {
   if (err) {
     console.log(err.message);
@@ -42,6 +44,11 @@ app.get('/posts', (req, res) => {
 
 app.get('/add-posts', (req, res) => {
   res.sendFile(path.join(__dirname + '/static/submit-page.html'));
+})
+
+app.post('/add-posts', (req, res) => {
+  console.log(req.body.title);
+  res.send('megkaptam, koszi');
 })
 
 app.listen(port, () => {
