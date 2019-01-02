@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/posts', (req, res) => {
-  const sqlQuery = "SELECT * FROM mock_data LIMIT 10 OFFSET 10;";
+  const sqlQuery = "SELECT * FROM mock_data ORDER BY score DESC LIMIT 10";
 
   conn.query(sqlQuery, (err, data) => {
     if(err) {
