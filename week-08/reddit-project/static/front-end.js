@@ -83,15 +83,10 @@ function getClick() {
 
 //navigate to the addpost site
 
-// const addPostButton = document.querySelector('div.add-post');
+const addPostButton = document.querySelector('div.add-post');
 
-// addPostButton.addEventListener('click', () => {
-//   const xhr = new XMLHttpRequest;
-//   xhr.onload = () => {
-//     if (xhr.status === 200) {
-//       console.log('ok');
-//     }
-//   }
-//   xhr.open('GET', 'http://localhost:8000/add-posts' );
-//   xhr.send();
-// })
+addPostButton.addEventListener('click', () => {
+
+  window.location.href = '/add-posts';
+  
+})
