@@ -3,11 +3,14 @@
 const myForm = document.querySelector('#add-post');
 
 myForm.addEventListener('submit', () => {
+
+  const title = document.querySelector('input#title');
+  const url = document.querySelector('input#url');
   
 const xhr = new XMLHttpRequest();
 const requestBody = {
-  title: "Return of the Space Cowboy",
-  url: "www.jamiroquai.com"
+  title: title.value,
+  url: url.value
 };
 
 xhr.onload = () => {

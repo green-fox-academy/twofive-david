@@ -47,7 +47,7 @@ app.get('/add-posts', (req, res) => {
 })
 
 app.post('/add-posts', (req, res) => {
-  console.log(req.body.title);
+  console.log(req.body);
   res.send('megkaptam, koszi');
 })
 
