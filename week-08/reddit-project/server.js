@@ -1,11 +1,27 @@
 'use strict'
 
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const app = express();
 const port = 8000;
+const mySql  = require('mysql');
 
-const mockData = {"posts":[{"id":2,"title":"blah","url":"http://9gag.com","timestamp":1546256371763,"score":0,"user":null},{"id":3,"title":"blah2","url":"http://9gag.com","timestamp":1546256371937,"score":0,"user":null},{"id":4,"title":"blah3333","url":"http://9gag.com","timestamp":1546256372057,"score":0,"user":null}]}
+const conn = mySql.createConnection({
+  host: process.env.host,
+  database: process.env.DB,
+  user: process.env.user,
+  password: process.env.password
+})
+
+conn.connect((err) => {
+  if (err) {
+    console.log(err.message);
+    return;
+  }
+  console.log('Connected to DB');
+})
 
 app.use('/static', express.static('static'));
 
@@ -14,7 +30,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/posts', (req, res) => {
-  res.json(mockData);
+  const sqlQuery = "SELECT * FROM mock_data LIMIT 10 OFFSET 10;";
+
+  conn.query(sqlQuery, (err, data) => {
+    if(err) {
+      res.status(500).send(err);
+    }
+    res.status(200).send(data);
+  });
 });
 
 app.get('/add-posts', (req, res) => {

@@ -6,8 +6,7 @@ xhr.open('GET', 'http://localhost:8000/posts');
 xhr.onload = () => {
   if (xhr.status === 200) {
     const response = JSON.parse(xhr.responseText);
-    const posts = response.posts;
-    createPosts(posts);
+    createPosts(response);
     getClick();
   }
 }
@@ -88,5 +87,5 @@ const addPostButton = document.querySelector('div.add-post');
 addPostButton.addEventListener('click', () => {
 
   window.location.href = '/add-posts';
-  
+
 })
