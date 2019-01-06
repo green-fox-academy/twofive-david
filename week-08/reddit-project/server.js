@@ -68,7 +68,12 @@ app.post('/vote', (req, res) => {
 
   const updateScore = `UPDATE mock_data SET score=${req.body.score} 
   WHERE id=${req.body.id}`
-  console.log(req.body);
+  conn.query(updateScore, (err) => {
+    if (err) {
+      console.err(err.message);
+    }
+    console.log(`database updated for ID: ${req.body.id}`);
+  })
   res.status(200).send();
 })
 

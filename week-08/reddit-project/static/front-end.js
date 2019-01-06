@@ -105,9 +105,9 @@ const vote = (article) => {
   xhr.open('POST', '/vote');
   xhr.setRequestHeader('Content-type', 'Application/JSON');
   xhr.onload = () => {
-    if(xhr.status === 200) {
-      console.log('ok');
-    }
+    // if(xhr.status === 200) {
+    //   console.log('ok');
+    // }
   }
   xhr.send(JSON.stringify(sqlQuery));
 }
