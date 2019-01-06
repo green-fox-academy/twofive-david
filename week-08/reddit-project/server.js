@@ -64,6 +64,14 @@ app.post('/add-posts', (req, res) => {
   res.send('megkaptam, koszi');
 })
 
+app.post('/vote', (req, res) => {
+
+  const updateScore = `UPDATE mock_data SET score=${req.body.score} 
+  WHERE id=${req.body.id}`
+  console.log(req.body);
+  res.status(200).send();
+})
+
 app.listen(port, () => {
   console.log(`Yo dawgs, app is listening on port ${port}`);
 })

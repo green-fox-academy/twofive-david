@@ -3,6 +3,7 @@
 const xhr = new XMLHttpRequest();
 
 xhr.open('GET', 'http://localhost:8000/posts');
+
 xhr.onload = () => {
   if (xhr.status === 200) {
     const response = JSON.parse(xhr.responseText);
@@ -30,6 +31,7 @@ const createPosts = (postsArr) => {
     const removeLink = document.createElement('a');
     newArticle.setAttribute('class', 'flex-container');
     newArticle.setAttribute('id', articleObj.id);
+    // newArticle.setAttribute('score', articleObj.score);
     scoreDiv.setAttribute('class', 'score');
     upVoteImg.setAttribute('src', './static/images/upvote.png');
     upVoteImg.setAttribute('alt', 'upvote');
@@ -70,12 +72,14 @@ const getClick = () => {
         let counterValue = Number(this.querySelector('.vote-count').textContent);
         counterValue += 1;
         counter.textContent = counterValue;
+        vote(article);
       }
       if (e.target.alt === 'downvote') {
         let counter = this.querySelector('.vote-count');
         let counterValue = Number(this.querySelector('.vote-count').textContent);
         counterValue -= 1;
         counter.textContent = counterValue;
+        vote(article);
       }
     })
   })
@@ -91,6 +95,19 @@ addPostButton.addEventListener('click', () => {
 
 })
 
-const modifyVote = (articleObject) => {
+//send votes to DB -itt nem baj, hogy felul van meghivva, egy onload kereten belul amit meg anno egy "GET"-re irtam?
 
+const vote = (article) => {
+  const sqlQuery = {
+    id: article.id,
+    score: Number(article.querySelector('.vote-count').textContent)
+  };
+  xhr.open('POST', '/vote');
+  xhr.setRequestHeader('Content-type', 'Application/JSON');
+  xhr.onload = () => {
+    if(xhr.status === 200) {
+      console.log('ok');
+    }
+  }
+  xhr.send(JSON.stringify(sqlQuery));
 }
