@@ -29,6 +29,7 @@ const createPosts = (postsArr) => {
     const modifyLink = document.createElement('a');
     const removeLink = document.createElement('a');
     newArticle.setAttribute('class', 'flex-container');
+    newArticle.setAttribute('id', articleObj.id);
     scoreDiv.setAttribute('class', 'score');
     upVoteImg.setAttribute('src', './static/images/upvote.png');
     upVoteImg.setAttribute('alt', 'upvote');
@@ -59,7 +60,7 @@ const createPosts = (postsArr) => {
   });
 }
 
-function getClick() {
+const getClick = () => {
   const articles = document.querySelectorAll('article');
 
   articles.forEach(article => {
@@ -89,3 +90,7 @@ addPostButton.addEventListener('click', () => {
   window.location.href = '/add-posts';
 
 })
+
+const modifyVote = (articleObject) => {
+
+}
