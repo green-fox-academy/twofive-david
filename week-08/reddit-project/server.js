@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/posts', (req, res) => {
-  const sqlQuery = "SELECT * FROM mock_data";
+  const sqlQuery = "SELECT * FROM mock_data ORDER BY score DESC";
 
   conn.query(sqlQuery, (err, data) => {
     if (err) {
