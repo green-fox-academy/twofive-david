@@ -43,7 +43,7 @@ app.get('/posts', (req, res) => {
 });
 
 app.get('/add-posts', (req, res) => {
-  res.sendFile(path.join(__dirname + '/static/submit-page.html'));
+  res.sendFile(path.join(__dirname + '/submit-page.html'));
 })
 
 app.post('/add-posts', (req, res) => {
@@ -83,11 +83,8 @@ app.get('/delete/:id', (req,res) => {
   res.redirect('/');
 })
 
-app.get('/delete/:id', (req,res) => {
-  conn.query(`DELETE FROM mock_data WHERE id=${req.params.id}`)
-  console.log('id deleted: ' + req.params.id)
-  res.end();
-  //res.redirect('/');
+app.get('/modify/:id', (req, res) => {
+  res.sendFile(path.join(__dirname + '/submit-page.html'));
 })
 
 app.listen(port, () => {

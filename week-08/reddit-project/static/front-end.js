@@ -43,7 +43,7 @@ const createPosts = (postsArr) => {
     contentDiv.setAttribute('class', 'content');
     submittedText.setAttribute('class', 'submitted-by');
     linksDiv.setAttribute('class', 'article-links');
-    modifyLink.setAttribute('href', '/modify');
+    modifyLink.setAttribute('href', `/modify/${articleObj.id}`);
     removeLink.setAttribute('href', `/delete/${articleObj.id}`);
     submittedText.innerHTML = 'submitted 1 year ago by <strong>anonymous</strong>';
     voteCount.textContent = articleObj.score;
