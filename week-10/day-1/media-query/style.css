@@ -1,0 +1,38 @@
+.container{
+  max-width: 600px;
+  display: flex;
+}
+
+.item{
+  width: 150px;
+  height: 150px;
+}
+
+.green{
+  background: #51d400;
+  flex-grow: 0;
+
+}
+
+.yellow{
+  background: #ffd62a;
+  width: 300px;
+  flex-grow: 0;
+
+}
+
+.purple{
+  background: #b02aff;
+  flex-grow: 0;
+
+}
+
+@media screen and (max-width: 500px) {
+  .item {
+    width: 100%;
+  }
+
+  .container {
+    flex-wrap: wrap;
+  }
+}
