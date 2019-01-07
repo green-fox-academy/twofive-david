@@ -1,0 +1,48 @@
+body {
+  background-color: #3e94ec;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: sans-serif;
+}
+
+th {
+  background-color: #1b1e24;
+  color: #bcc4cc;
+  width: 400px;
+  text-align: left;
+}
+
+td {
+color: #818599;
+}
+
+td, th {
+  border: 1px solid #9ea7af;
+  height: 75px;
+  padding-left: 1em;
+}
+
+tbody  {
+  background-color: #ffffff;
+}
+
+tbody > tr:nth-child(2n+1){
+  background-color: #ebebeb;
+}
+
+.flex-container{
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data="currency"]::before {
+  content: '$ ';
+}
+
+th{
+  border-bottom-width: 3px;
+}
