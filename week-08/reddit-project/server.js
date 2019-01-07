@@ -83,6 +83,13 @@ app.get('/delete/:id', (req,res) => {
   res.redirect('/');
 })
 
+app.get('/delete/:id', (req,res) => {
+  conn.query(`DELETE FROM mock_data WHERE id=${req.params.id}`)
+  console.log('id deleted: ' + req.params.id)
+  res.end();
+  //res.redirect('/');
+})
+
 app.listen(port, () => {
   console.log(`Yo dawgs, app is listening on port ${port}`);
 })
