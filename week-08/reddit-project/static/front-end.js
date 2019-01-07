@@ -1,10 +1,11 @@
 'use strict'
 
-const xhr = new XMLHttpRequest();
 
-xhr.open('GET', 'http://localhost:8000/posts');
 
-xhr.onload = () => {
+const showList = () => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://localhost:8000/posts');
+  xhr.onload = () => {
   if (xhr.status === 200) {
     const response = JSON.parse(xhr.responseText);
     createPosts(response);
@@ -12,6 +13,7 @@ xhr.onload = () => {
   }
 }
 xhr.send();
+}
 
 //create list of posts
 
@@ -41,8 +43,8 @@ const createPosts = (postsArr) => {
     contentDiv.setAttribute('class', 'content');
     submittedText.setAttribute('class', 'submitted-by');
     linksDiv.setAttribute('class', 'article-links');
-    modifyLink.setAttribute('href', '#');
-    removeLink.setAttribute('href', '#');
+    modifyLink.setAttribute('href', '/modify');
+    removeLink.setAttribute('href', `/delete/${articleObj.id}`);
     submittedText.innerHTML = 'submitted 1 year ago by <strong>anonymous</strong>';
     voteCount.textContent = articleObj.score;
     articleTitle.textContent = articleObj.title;
@@ -85,7 +87,20 @@ const getClick = () => {
   })
 }
 
-//navigate to the addpost site
+//send votes to DB
+
+const vote = (article) => {
+  const sqlQuery = {
+    id: article.id,
+    score: Number(article.querySelector('.vote-count').textContent)
+  };
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/vote');
+  xhr.setRequestHeader('Content-type', 'Application/JSON');
+  xhr.send(JSON.stringify(sqlQuery));
+}
+
+//navigate to the addpost site, adding post happens from other js file
 
 const addPostButton = document.querySelector('div.add-post');
 
@@ -95,19 +110,4 @@ addPostButton.addEventListener('click', () => {
 
 })
 
-//send votes to DB -itt nem baj, hogy felul van meghivva, egy onload kereten belul amit meg anno egy "GET"-re irtam?
-
-const vote = (article) => {
-  const sqlQuery = {
-    id: article.id,
-    score: Number(article.querySelector('.vote-count').textContent)
-  };
-  xhr.open('POST', '/vote');
-  xhr.setRequestHeader('Content-type', 'Application/JSON');
-  xhr.onload = () => {
-    // if(xhr.status === 200) {
-    //   console.log('ok');
-    // }
-  }
-  xhr.send(JSON.stringify(sqlQuery));
-}
+showList();
