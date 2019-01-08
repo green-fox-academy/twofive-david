@@ -26,6 +26,7 @@ conn.connect((err) => {
 })
 
 app.use('/static', express.static('static'));
+app.use('/modify/static', express.static('static'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'));
@@ -84,7 +85,7 @@ app.get('/delete/:id', (req,res) => {
 })
 
 app.get('/modify/:id', (req, res) => {
-  res.sendFile(path.join(__dirname + '/submit-page.html'));
+  res.sendFile(path.join(__dirname + '/modify-page.html'));
 })
 
 app.listen(port, () => {

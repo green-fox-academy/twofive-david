@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./static/modify-style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+  <title>Reddit Submit Clone</title>
+</head>
+
+<body>
+  <div class="fullpage">
+    <header>
+      <div width='100%'>
+        <h1>Space</h1>
+        <p class="shl">Post to /R/Space</p>
+      </div>
+    </header>
+    <main>
+      <form id="add-post" action="http://localhost:8000/">
+        <div>
+          <label for="title"><span>*</span>title</label>
+          <input type="text" id="title">
+        </div>
+        <div>
+          <label for="url" class="extra-padding">URL</label>
+          <input type="text" id="url">
+        </div>
+        <input type="submit">
+      </form>
+    </main>
+  </div>
+  <script src="./static/modify.js"></script>
+</body>
+</html>
