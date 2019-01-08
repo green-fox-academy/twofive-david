@@ -28,3 +28,16 @@ test('testing with time = 0', (t) => {
     t.end();
   })
 })
+
+test('testing with only one query', (t) => {
+  request(app)
+  .get('/yondu?time=1')
+  .expect(202)
+  .expect({ error: "either time or distance missing"})
+  .expect('Content-type', 'application/json; charset=utf-8')
+  .end((err, res) => {
+    if (err) throw err;
+    t.same(res.body, { error: "either time or distance missing" }, 'not enough arguments');
+    t.end();
+  })
+})
