@@ -18,5 +18,4 @@ test("testing with distance and time", (t) => {
     t.same(res.body, {distance: '100', time: '10', speed: 10}, 'ok' );
     t.end();
   })
-
 })
