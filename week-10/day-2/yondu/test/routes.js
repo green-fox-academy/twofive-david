@@ -10,12 +10,21 @@ test("testing with distance and time", (t) => {
   .expect(200)
   .expect('Content-type', 'application/json; charset=utf-8')
   .end((err, res) => {
-    if (err) {
-      if (err) throw err;
-      return;
-    } 
-
+    if (err)  throw err;
     t.same(res.body, {distance: '100', time: '10', speed: 10}, 'ok' );
+    t.end();
+  })
+})
+
+test('testing with time = 0', (t) => {
+  request(app)
+  .get('/yondu?time=0')
+  .expect(202)
+  .expect({ error: "cannot divide by zero" })
+  .expect('Content-type', 'application/json; charset=utf-8')
+  .end((err, res) => {
+    if (err) throw err;
+    t.same(res.body, { error: "cannot divide by zero" }, 'cannot divide by zero-so passed');
     t.end();
   })
 })
