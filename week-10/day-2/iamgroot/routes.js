@@ -10,12 +10,12 @@ app.get('/groot', (req, res) => {
       received: message,
       translated: 'I am groot'
     };
-    res.json(response);
+    res.status(200).json(response);
   } else {
     const response = {
       "error": "I am Groot!"
     };
-    res.json(response);
+    res.status(202).json(response);
   }
 })
 
