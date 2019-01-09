@@ -12,6 +12,10 @@ const connection = mySql.createConnection({
   password: process.env.PASS
 })
 
+const randomNo = () => {
+  return Math.floor(Math.random * 1000);
+}
+
 connection.connect(err => {
   if (err) {
     console.error(err.message);
@@ -27,29 +31,57 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 })
 
-app.post('/api/links', (req, res) => {
-  const randomNo = Math.floor(Math.random() * 10000);
-  const { url, alias } = req.body;
+app.get('/api/links', (req, res) => {
+  const getLinks = `SELECT id, url, alias, hitCount FROM data;`;
 
-  const postDb = `INSERT INTO data (url, alias, hitCount, secretCode) VALUES ('${url}', '${alias}', 0, ${randomNo});`
-  //const getAlias = `SELECT * FROM data WHERE alias = '${alias}';`;
+  connection.query(getLinks, (err, data) =>{
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.status(200).json(data);
+  })
+
+})
+
+
+
+app.post('/api/links', (req, res) => {
+  const { url, alias } = req.body;
+  const randomNo = Math.floor(1000 + Math.random() * 9000);
+  const number = randomNo;
+  const postDb = `INSERT INTO data (url, alias, hitCount, secretCode) VALUES ('${url}', '${alias}', 0, ${number});`
+  const getAlias = `SELECT * FROM data WHERE alias = '${alias}';`;
+  let aliasState = "";
+
+
   connection.query(postDb, (err, data) => {
     if (err) {
       res.status(500).send(err);
-    } else if (data)
-    res.status(200).send(data);
+      return;
+    }
+    console.log(data.insertId);
   });
 
+  // connection.query(getAlias, (err, data) => {
+  //   if (err) {
+  //     res.status(500).send(err);
+  //     return;
+  //   }
+  //   if (data.length !== 0) {
+  //     aliasState = "taken";
+  //   }
+  // })
+
+  res.status(200).send({ status: "ok" });
 });
 
 
-const entry = 'INSERT INTO data (url, alias, hitCount, secretCode) VALUES (url, alias, 10, 1111);';
+
+
+//const entry = 'INSERT INTO data (url, alias, hitCount, secretCode) VALUES (url, alias, 10, 1111);';
 
 
 app.listen(port, () => {
   console.log(`App is listening on port: ${port}`)
 })
-
-const randomNo = () => {
-  return Math.floor(Math.random * 1000);
-}
