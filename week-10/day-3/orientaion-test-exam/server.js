@@ -12,10 +12,6 @@ const connection = mySql.createConnection({
   password: process.env.PASS
 })
 
-const randomNo = () => {
-  return Math.floor(Math.random * 1000);
-}
-
 connection.connect(err => {
   if (err) {
     console.error(err.message);
@@ -34,16 +30,58 @@ app.get('/', (req, res) => {
 app.get('/api/links', (req, res) => {
   const getLinks = `SELECT id, url, alias, hitCount FROM data;`;
 
-  connection.query(getLinks, (err, data) =>{
+  connection.query(getLinks, (err, data) => {
     if (err) {
       res.status(500).send(err);
       return;
     }
     res.status(200).json(data);
   })
-
 })
 
+app.delete('/api/links/:id', (req, res) => {
+  const { id } = req.params;
+
+  const deleteQuery = `DELETE FROM data WHERE id = '${id}';`;
+  const findQuery = `SELECT * FROM data WHERE id = '${id}';`
+  const code = req.body.secretCode;
+
+  connection.query(findQuery, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    if (data.length === 0) {
+      res.status(404).send('Id not found');
+      return;
+    }
+    if (data[0].secretCode != code) {
+      res.status(403).send('Keys don\'t match');
+      return;
+    }
+
+    console.log(data[0].secretCode == code);
+
+    res.status(200).json(data);
+  })
+})
+
+app.get('/a/:alias', (req, res) => {
+  const { alias } = req.params;
+  const updateAlias = `UPDATE data SET hitCount = hitCount + 1 WHERE alias = '${alias}'`;
+
+  connection.query(updateAlias, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    if (data.affectedRows === 0) {
+      res.status(404).send('Alias not found');
+      return;
+    }
+    res.status(200).send('Hitcount incremented');
+  })
+})
 
 
 app.post('/api/links', (req, res) => {
@@ -52,7 +90,6 @@ app.post('/api/links', (req, res) => {
   const number = randomNo;
   const postDb = `INSERT INTO data (url, alias, hitCount, secretCode) VALUES ('${url}', '${alias}', 0, ${number});`
   const getAlias = `SELECT * FROM data WHERE alias = '${alias}';`;
-  let aliasState = "";
 
 
   connection.query(postDb, (err, data) => {
@@ -63,24 +100,8 @@ app.post('/api/links', (req, res) => {
     console.log(data.insertId);
   });
 
-  // connection.query(getAlias, (err, data) => {
-  //   if (err) {
-  //     res.status(500).send(err);
-  //     return;
-  //   }
-  //   if (data.length !== 0) {
-  //     aliasState = "taken";
-  //   }
-  // })
-
   res.status(200).send({ status: "ok" });
 });
-
-
-
-
-//const entry = 'INSERT INTO data (url, alias, hitCount, secretCode) VALUES (url, alias, 10, 1111);';
-
 
 app.listen(port, () => {
   console.log(`App is listening on port: ${port}`)
