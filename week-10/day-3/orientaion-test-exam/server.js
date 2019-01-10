@@ -100,7 +100,7 @@ app.post('/api/links', (req, res) => {
     console.log(data.insertId);
   });
 
-  res.status(200).send({ status: "ok" });
+  res.status(200).send({ alias: alias, secretcode: number});
 });
 
 app.listen(port, () => {
