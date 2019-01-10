@@ -58,7 +58,7 @@ app.delete('/api/links/:id', (req, res) => {
     if (data[0].secretCode != code) {
       res.status(403).send('Keys don\'t match');
       return;
-    } 
+    }
 
     connection.query(deleteQuery, id, (err, data) => {
       if (err) {
@@ -70,7 +70,6 @@ app.delete('/api/links/:id', (req, res) => {
         message: "entry deleted"
       })
     })
-    //res.status(200).json(data);
   })
 })
 
@@ -99,16 +98,27 @@ app.post('/api/links', (req, res) => {
   const postDb = `INSERT INTO data (url, alias, hitCount, secretCode) VALUES ('${url}', '${alias}', 0, ${number});`
   const getAlias = `SELECT * FROM data WHERE alias = '${alias}';`;
 
-
-  connection.query(postDb, (err, data) => {
+  connection.query(getAlias, (err, rows) => {
     if (err) {
-      res.status(500).send(err);
+      console.log(err.message);
+      res.status(500).send('internal server error');
       return;
     }
-    console.log(data.insertId);
-  });
+    if (rows.length != 0) {
+      res.status(400).json({
+        message: "Alias already in use, sorryka."
+      })
+      return;
+    }
 
-  res.status(200).send({ alias: alias, secretcode: number});
+    connection.query(postDb, (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+        return;
+      }
+      res.status(200).send({ alias: alias, secretcode: number });
+    });
+  })
 });
 
 app.listen(port, () => {
