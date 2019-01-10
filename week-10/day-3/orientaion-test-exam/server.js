@@ -42,7 +42,7 @@ app.get('/api/links', (req, res) => {
 app.delete('/api/links/:id', (req, res) => {
   const { id } = req.params;
 
-  const deleteQuery = `DELETE FROM data WHERE id = '${id}';`;
+  const deleteQuery = `DELETE FROM data WHERE id = ?`;
   const findQuery = `SELECT * FROM data WHERE id = '${id}';`
   const code = req.body.secretCode;
 
@@ -58,11 +58,19 @@ app.delete('/api/links/:id', (req, res) => {
     if (data[0].secretCode != code) {
       res.status(403).send('Keys don\'t match');
       return;
-    }
+    } 
 
-    console.log(data[0].secretCode == code);
-
-    res.status(200).json(data);
+    connection.query(deleteQuery, id, (err, data) => {
+      if (err) {
+        console.log(err.message);
+        res.status(500).send('elodbtam az agyam gecc');
+        return;
+      }
+      res.status(200).json({
+        message: "entry deleted"
+      })
+    })
+    //res.status(200).json(data);
   })
 })
 
@@ -79,7 +87,7 @@ app.get('/a/:alias', (req, res) => {
       res.status(404).send('Alias not found');
       return;
     }
-    res.status(200).send('Hitcount incremented');
+    res.status(200).send('Hello');
   })
 })
 
